@@ -8,3 +8,22 @@ import './css/base.scss';
 import './images/turing-logo.png'
 
 console.log('This is the JavaScript entry file - your code begins here.');
+
+
+// // SHOW & HIDE HELPER FUNCTIONS
+
+// function hide(elements) {
+//   elements.forEach(element => {
+//     element.classList.add('hidden');
+//   });
+// }
+
+// function show(elements) {
+//   elements.forEach(element => {
+//     element.classList.remove('hidden');
+//   });
+// }
+
+// hide([yourTripsDashboardPage, wannaJetPage, navBarLinksSection, name]);
+
+// show([loginPage]);
