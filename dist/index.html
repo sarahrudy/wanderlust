@@ -23,23 +23,17 @@
     </article>
   </section>
   <section class="main-page-section">
-    <header>
-      <div class="container">
-        <nav>
-          <ul>
-            <li>PAST</li>
-            <li>CURRENT</li>
-            <li>UPCOMING</li>
-            <li>PENDING</li>
-          </ul>
-        </nav>
-      </div>
+    <header cla>
+      <button>PAST</button>
+      <button>CURRENT</button>
+      <button>UPCOMING</button>
+      <button>PENDING</button>
     </header>
   </section>
   <section class="book-trip-section">
     <h1 class="welcome-traveler">Hi, Traveler!</h1>
-    <h2 class="book-trip">BOOK TRIP</h2>
     <form>
+      <h2 class="book-trip">BOOK TRIP</h2>
       <label for="travel-date" class="booking-labels">Travel Date
         <input class="travel-date" id="travel-date" name="travel-date" min="2000-01-01" max="2035-12-31" placeholder="select date" required>
       </label>
@@ -59,15 +53,17 @@
           <option value="trip-id">Copenhagen, Denmark</option>
         </select>
       </label>
+      <button class="book-it-button">Book It</button>
     </form>
-    <button class="book-it-button">Book It</button>
    </section>
    <section class="trips-section">
       <h2>PAST TRIPS</h2>
       <div class="card-container">
         <article class="trip-cards">
           <img src="" alt="city-image">
-          <h3 class="destination-name">Copenhagen, Denmark</h3>
+          <div class="h3-container"> 
+            <h3 class="destination-name">Copenhagen, Denmark</h3>
+          </div>
           <p>Travel Date: [insert data here]</p>
           <p>Number of People on Trip: [insert number here]</p>
           <p>Duration: [insert number of days here] days</p>
