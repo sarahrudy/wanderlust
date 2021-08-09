@@ -4,13 +4,74 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <title>Wanderlust</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-  
+  <section class="login-page-section">
+    <article class="login-section">
+      <h1>Login to book your next trip!</h1>
+      <img src="" alt="" class="cool-travel-photo">
+    <form class="login-page">
+      <label for="username" class="login-labels">
+        <input class="username-input" type="text" placeholder="username" required>
+      </label>
+      <label for="password" class="login-labels">
+        <input class="password-input" type="text" placeholder="password" required>
+      </label>
+      <button class="login-button">Login</button>
+    </form>
+    </article>
+  </section>
+  <section class="main-page-section">
+    <header cla>
+      <button>PAST</button>
+      <button>CURRENT</button>
+      <button>UPCOMING</button>
+      <button>PENDING</button>
+    </header>
+  </section>
+  <section class="book-trip-section">
+    <h1 class="welcome-traveler">Hi, Traveler!</h1>
+    <form>
+      <h2 class="book-trip">BOOK TRIP</h2>
+      <label for="travel-date" class="booking-labels">Travel Date
+        <input class="travel-date" id="travel-date" name="travel-date" min="2000-01-01" max="2035-12-31" placeholder="select date" required>
+      </label>
+      <label for="trip-duration" class="booking-labels">Trip Duration
+        <input class="trip-duration" type="number" min="1" placeholder="select number of days" required>
+      </label>
+      <label for="num-travelers" class="booking-labels">Number of Travelers
+        <input class="num-of-travelers" type="number" min="1" placeholder="how many travelers?" required>
+      </label>
+      <label for="destination" class="booking-labels">Destination
+        <select name="trips" id="trips" required>
+          <!-- the name attribute is needed to reference the form data after the form is submitted (if you omit the name attribute, no data from teh drop-down list will be submitted) -->
+          <!-- the id attribute is needed to associate the drop-down list with a label -->
+          <option value="trip-id">Brussels, Belguim</option>
+          <option value="trip-id">Berlin, Germany</option>
+          <option value="trip-id">Helsinki, Finland</option>
+          <option value="trip-id">Copenhagen, Denmark</option>
+        </select>
+      </label>
+      <button class="book-it-button">Book It</button>
+    </form>
+   </section>
+   <section class="trips-section">
+      <h2>PAST TRIPS</h2>
+      <div class="card-container">
+        <article class="trip-cards">
+          <img src="" alt="city-image">
+          <div class="h3-container"> 
+            <h3 class="destination-name">Copenhagen, Denmark</h3>
+          </div>
+          <p>Travel Date: [insert data here]</p>
+          <p>Number of People on Trip: [insert number here]</p>
+          <p>Duration: [insert number of days here] days</p>
+          <p>Trip status: [insert status here]</p>
+        </article>
+      </div>
+   </section>
   <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   <script src="bundle.js"></script>
-
 </body>
 </html>
