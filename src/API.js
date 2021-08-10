@@ -18,4 +18,8 @@ export function getTripsData() {
     .catch(err => console.log(`Trips API Error: ${err.message}`))
 }
 
-// add destinationsData 
+export function getDestinationsData() {
+  fetch("http://localhost:3001/api/v1/destinations")
+    .then(response => checkForError(response))
+    .catch(err => console.log(`Destinations API Error: ${err.message}`))
+}
