@@ -1,6 +1,3 @@
-// https://codesandbox.io/s/network-request-practice-forked-with-changes-cfs77
-
-
 export function getTraveler(id) {
   return fetch(`http://localhost:3001/api/v1/travelers/${id}`)
   .then(response => checkForError(response))
