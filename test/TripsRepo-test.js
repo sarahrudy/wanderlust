@@ -11,7 +11,7 @@ describe('Trips Repo', () => {
   })
 
   it('should be a function', () => {
-    expect(TripsRepo).to.be.a("function")
+    expect(TripsRepo).to.be.a('function')
   })
 
   it('should be an instance of TripsRepo', () => {

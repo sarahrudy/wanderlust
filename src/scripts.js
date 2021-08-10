@@ -21,8 +21,8 @@ const bookItButton = document.querySelector(".book-it-button")
 const destinationDropdown = document.querySelector("#destination")
 const numTravelers = document.querySelector("#num-travelers")
 const departDate = document.querySelector("#travel-date")
-const tripDuration = document.querySelector("#trip-duration");
-
+const tripDuration = document.querySelector("#trip-duration")
+const tripCostLine = document.querySelector("#trip-cost")
 
 // ------- EVENT LISTENER --------
 bookItButton.addEventListener("click", submitTripRequest);
@@ -100,6 +100,7 @@ function postTripRequest() {
     .then(response => response.json())
     .then(response => console.log(response))
     .then(data => traveler.trips.push(data))
+    .then(tripCostLine.innerText = "Trip request submitted!")
     .catch(err => console.log(`POST Error: ${err.message}`))
 }
 
