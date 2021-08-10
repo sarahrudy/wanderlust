@@ -11,7 +11,7 @@ let updateDOM = {
     tripsContainer.innerHTML = ''
     trips.forEach(trip => {
       tripsContainer.innerHTML +=
-      `<section class="trips-container" id=${trip.id}>
+      `<section class="card" id=${trip.id}>
         <div class="trips-container">
           <article class="trip-cards">
             <div class="destination-image" style=
