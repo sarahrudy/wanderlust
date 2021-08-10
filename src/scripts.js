@@ -22,7 +22,7 @@ let traveler, trips, destinations
 window.addEventListener('load', getData);
 
 function getData() {
-  Promise.all([travelerData(), tripsData(), destinationsData()])
+  Promise.all([getTravelerData(), getTripsData(), getDestinationsData()])
     .then(data => {
       traveler = data[0];
       trips = data[1];
