@@ -51,6 +51,7 @@ let dataSetter = {
 
   setDestinations(destinationsData) {
     destinations = new DestinationsRepo(destinationsData.destinations)
+    updateDOM.displayDestinationDropdown(destinationsData.destinations)
   },
 
   matchTripsToDestinations() {
