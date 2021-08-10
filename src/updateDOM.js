@@ -1,8 +1,9 @@
 let updateDOM = {
-  
+
   greetUser(traveler) {
     const greeting = document.querySelector("#greeting")
-    greeting.innerText = `Hi, ${traveler.name}!`
+    const firstName = traveler.name.split(' ')[0]
+    greeting.innerText = `Hi, ${firstName}!`
   }
 }
 
