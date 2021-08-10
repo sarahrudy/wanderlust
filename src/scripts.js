@@ -16,8 +16,17 @@ import TripsRepo from './TripsRepo'
 import DestinationsRepo from './DestinationsRepo'
 import updateDOM from './updateDOM'
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+// ------- QUERY SELECTORS --------
+const bookItButton = document.querySelector(".book-it-button")
+const destinationDropdown = document.querySelector("#destination")
+const numTravelers = document.querySelector("#num-travelers")
+const departDate = document.querySelector("#travel-date")
+const tripDuration = document.querySelector("#trip-duration");
+
+
+// ------- EVENT LISTENER --------
+bookItButton.addEventListener("click", submitTripRequest);
+
 
 let traveler, allTravelers, allTrips, destinations
 
@@ -61,15 +70,44 @@ let dataSetter = {
   }
 }
 
-  function getAnnualSpent() {
-    const cost = traveler.calculateYearlySpent(traveler.trips)
-    updateDOM.displayAmountSpentThisYear(cost.toFixed(2))
-  }
+function getAnnualSpent() {
+  const cost = traveler.calculateYearlySpent(traveler.trips)
+  updateDOM.displayAmountSpentThisYear(cost.toFixed(2))
+}
 
+function submitTripRequest() {
+  event.preventDefault()
+  postTripRequest()
+}
 
+function postTripRequest() {
+  fetch("http://localhost:3001/api/v1/trips", {
+    method: "POST",
+    body: JSON.stringify({
+      "id": Date.now(),
+      "userID": parseInt(traveler.id),
+      "destinationID": parseInt(destinationDropdown.value),
+      "travelers": parseInt(numTravelers.value),
+      "date": formatDate(departDate.value),
+      "duration": parseInt(tripDuration.value),
+      "status": "pending",
+      "suggestedActivities": []
+    }),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .then(data => traveler.trips.push(data))
+    .catch(err => console.log(`POST Error: ${err.message}`))
+}
 
-
-
+function formatDate(dateValue) {
+  let splitDate = dateValue.split("-");
+  let joinedDate = splitDate.join("/");
+  return joinedDate
+}
 
 
 
