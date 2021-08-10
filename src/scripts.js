@@ -23,10 +23,11 @@ const numTravelers = document.querySelector("#num-travelers")
 const departDate = document.querySelector("#travel-date")
 const tripDuration = document.querySelector("#trip-duration")
 const tripCostLine = document.querySelector("#trip-cost")
+const calculateTripCostButton = document.querySelector(".calculate-cost-button")
 
 // ------- EVENT LISTENER --------
-bookItButton.addEventListener("click", submitTripRequest);
-
+bookItButton.addEventListener("click", submitTripRequest)
+calculateTripCostButton.addEventListener("click", calculateTripCost)
 
 let traveler, allTravelers, allTrips, destinations
 
@@ -108,6 +109,12 @@ function formatDate(dateValue) {
   let splitDate = dateValue.split("-");
   let joinedDate = splitDate.join("/");
   return joinedDate
+}
+
+function calculateTripCost() {
+  event.preventDefault();
+  tripCostLine.innerText =
+    `This trip will cost $${destinations.getTripCost().toFixed(2)}.`;
 }
 
 
