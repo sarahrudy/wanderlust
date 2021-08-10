@@ -7,8 +7,8 @@ let updateDOM = {
   },
 
   displayTripCards(trips) {
-    const tripsSection = document.querySelector('#tripsSection')
-    tripsSection.innerHTML = ''
+    const tripsContainer = document.querySelector('#tripsContainer')
+    tripsContainer.innerHTML = ''
     trips.forEach(trip => {
       tripsContainer.innerHTML +=
       `<section class="trips-container" id=${trip.id}>
