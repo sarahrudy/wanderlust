@@ -4,7 +4,7 @@
 import './css/base.scss'
 
 import {
-  getTravelersData,
+  getTravelerData,
   getTraveler,
   getTripsData,
   getDestinationsData
