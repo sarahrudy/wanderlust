@@ -62,7 +62,7 @@ let dataSetter = {
 
   function getAnnualSpent() {
     const cost = traveler.calculateYearlySpent(traveler.trips)
-    updateDOM.displayAmountSpentThisYear(cost)
+    updateDOM.displayAmountSpentThisYear(cost.toFixed(2))
   }
 
 
