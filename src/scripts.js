@@ -17,8 +17,18 @@ import TripsRepo from './TripsRepo'
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 
+let traveler, trips, destinations
 
+window.addEventListener('load', getData);
 
+function getData() {
+  Promise.all([travelerData(), tripsData(), destinationsData()])
+    .then(data => {
+      traveler = data[0];
+      trips = data[1];
+      destinations = data[2];
+  })
+}
 
 
 
