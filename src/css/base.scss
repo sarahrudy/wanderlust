@@ -58,8 +58,13 @@ form {
   align-items: center;
 }
 
+#tripsSection {
+  min-height: 300px;
+}
+
 .trip-cards {
-  width: 95%;
+  max-width: 100%;
+  margin: 10px;
 }
 
 .h3-container {
