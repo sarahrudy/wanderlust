@@ -33,6 +33,14 @@ let updateDOM = {
     })
   },
 
+  displayAmountSpentThisYear(amountTotal) {
+    const amountSpentLine = document.querySelector(".amount-spent")
+    amountSpentLine.innerText = `You've only spent $${amountTotal} this year on travel.`
+  },
+
+  
+
+
 
 }
 
