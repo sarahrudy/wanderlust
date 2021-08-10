@@ -54,13 +54,19 @@ let dataSetter = {
   },
 
   matchTripsToDestinations() {
-    traveler.getTripDetails(destinations.allDestinations);
-    updateDOM.displayTripCards(traveler.trips);
-  },
-
-
-
+    traveler.getTripDetails(destinations.allDestinations)
+    updateDOM.displayTripCards(traveler.trips)
+    getAnnualSpent()
+  }
 }
+
+  function getAnnualSpent() {
+    const cost = traveler.calculateYearlySpent(traveler.trips)
+    updateDOM.displayAmountSpentThisYear(cost)
+  }
+
+
+
 
 
 
