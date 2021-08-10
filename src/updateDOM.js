@@ -38,7 +38,13 @@ let updateDOM = {
     amountSpentLine.innerText = `You've only spent $${amountTotal} this year on travel.`
   },
 
-  
+  displayDestinationDropdown(destinationsData) {
+    const destinationsDropdown = document.querySelector("#destination")
+    destinationsData.map(dest => {
+      destinationsDropdown.innerHTML +=
+        `<option value="${dest.id}">${dest.destination}</option>`
+    })
+  },
 
 
 
