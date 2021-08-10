@@ -1,3 +1,5 @@
+const dayjs = require("dayjs")
+
 class Traveler {
   constructor(travelerData) {
     this.id = travelerData.id;
@@ -14,6 +16,8 @@ class Traveler {
     this.trips.forEach(trip => {
       let matchedDest = destinationData.find(dest => dest.id === trip.destinationID)
       trip.destination = matchedDest.destination
+      trip.estimatedLodgingCostPerDay = matchedDest.estimatedLodgingCostPerDay
+      trip.estimatedFlightCostPerPerson = matchedDest.estimatedFlightCostPerPerson
       trip.image = matchedDest.image
       trip.alt = matchedDest.alt
     })
