@@ -16,7 +16,20 @@ class Traveler {
       trip.destination = matchedDest.destination
       trip.image = matchedDest.image
       trip.alt = matchedDest.alt
-    });
+    })
+  }
+
+  calculateYearlySpent() {
+    const pastYear = dayjs().subtract(1, "year").format("YYYY/MM/DD")
+    const costWithoutFee = this.trips.reduce((sum, trip) => {
+      if (trip.date > pastYear) {
+        sum += (trip.travelers * trip.estimatedFlightCostPerPerson)
+          + (trip.duration * trip.estimatedLodgingCostPerDay)
+      }
+      return sum
+    }, 0)
+    const costPlusFee = costWithoutFee * 1.1
+    return costPlusFee
   }
 }
 
