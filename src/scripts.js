@@ -13,22 +13,24 @@ import {
 import dayjs from 'dayjs'
 import Traveler from './Traveler'
 import TripsRepo from './TripsRepo'
+import DestinationsRepo from './DestinationsRepo'
 import updateDOM from './updateDOM'
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
 
-let traveler, allTravelers, allTrips, allDestinations
+let traveler, allTravelers, allTrips, destinations
 
-window.addEventListener('load', getData(1))
+window.addEventListener('load', getData(14))
 
 function getData(id) {
   Promise.all([getTraveler(id), getAllTravelersData(), getAllTripsData(), getAllDestinationsData()])
     .then(data => {
       dataSetter.setTraveler(data[0])
-      allTravelers = data[1]
-      allTrips = data[2]
-      allDestinations = data[3]
+      dataSetter.setTravelers(data[1])
+      dataSetter.setTrips(data[2])
+      dataSetter.setDestinations(data[3])
+      dataSetter.matchTripsToDestinations();
   })
 }
 
@@ -36,7 +38,28 @@ let dataSetter = {
   setTraveler(travelerData) {
     traveler = new Traveler(travelerData)
     updateDOM.greetUser(traveler)
-  }
+  },
+
+  setTravelers(travelersData) {
+    allTravelers = travelersData.travelers
+  },
+
+  setTrips(tripsData) {
+    allTrips = new TripsRepo(tripsData.trips)
+    traveler.getMyTrips(tripsData.trips)
+  },
+
+  setDestinations(destinationsData) {
+    destinations = new DestinationsRepo(destinationsData.destinations)
+  },
+
+  matchTripsToDestinations() {
+    traveler.getTripDetails(destinations.allDestinations);
+    updateDOM.displayTripCards(traveler.trips);
+  },
+
+
+
 }
 
 
