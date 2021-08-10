@@ -23,3 +23,11 @@ export function getDestinationsData() {
     .then(response => checkForError(response))
     .catch(err => console.log(`Destinations API Error: ${err.message}`))
 }
+
+export function checkForError(response) {
+  if (!response.ok) {
+    throw new Error('Something went wrong, please try again.');
+  } else {
+    return response.json();
+  }
+}
