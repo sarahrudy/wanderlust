@@ -29,7 +29,7 @@ let updateDOM = {
             <p>Trip status: ${trip.status}</p>
           </article>
         </div>
-      </section >`
+      </section>`
     })
   },
 
@@ -46,13 +46,17 @@ let updateDOM = {
     })
   },
 
-  
-
-
+  displayMainPage() {
+    const loginPageSection = document.querySelector(".login-page-section");
+    const mainPageSection = document.querySelector(".main-page-section");
+    const bookTripSection = document.querySelector(".book-trip-section");
+    const tripCardsSection = document.querySelector(".trip-cards-section");
+    loginPageSection.classList.add("hidden");
+    mainPageSection.classList.remove("hidden");
+    bookTripSection.classList.remove("hidden");
+    tripCardsSection.classList.remove("hidden");
+  }
 }
-
-
-
 
 
 
