@@ -1,6 +1,3 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
 import './css/base.scss'
 
 import {
@@ -10,7 +7,6 @@ import {
   getAllDestinationsData
 } from './API'
 
-import dayjs from 'dayjs'
 import Traveler from './Traveler'
 import TripsRepo from './TripsRepo'
 import DestinationsRepo from './DestinationsRepo'
@@ -24,15 +20,24 @@ const departDate = document.querySelector("#travel-date")
 const tripDuration = document.querySelector("#trip-duration")
 const tripCostLine = document.querySelector("#trip-cost")
 const calculateTripCostButton = document.querySelector(".calculate-cost-button")
+const loginSubmitButton = document.querySelector(".login-button")
+const usernameInput = document.querySelector(".username-input")
+const passwordInput = document.querySelector(".password-input")
 
-// ------- EVENT LISTENER --------
+// ------- EVENT LISTENERS --------
 bookItButton.addEventListener("click", submitTripRequest)
 calculateTripCostButton.addEventListener("click", calculateTripCost)
+loginSubmitButton.addEventListener("click", checkLogin)
 
-let traveler, allTravelers, allTrips, destinations
 
 window.addEventListener('load', getData(14))
 
+
+// ------- GLOBAL VARIABLES -------
+let traveler, allTravelers, allTrips, destinations
+
+
+// -------- FETCH ----------
 function getData(id) {
   Promise.all([getTraveler(id), getAllTravelersData(), getAllTripsData(), getAllDestinationsData()])
     .then(data => {
@@ -44,6 +49,7 @@ function getData(id) {
   })
 }
 
+// -------- FETCH HELPER METHODS -------
 let dataSetter = {
   setTraveler(travelerData) {
     traveler = new Traveler(travelerData)
@@ -106,33 +112,31 @@ function postTripRequest() {
 }
 
 function formatDate(dateValue) {
-  let splitDate = dateValue.split("-");
-  let joinedDate = splitDate.join("/");
+  let splitDate = dateValue.split("-")
+  let joinedDate = splitDate.join("/")
   return joinedDate
 }
 
 function calculateTripCost() {
-  event.preventDefault();
+  event.preventDefault()
   tripCostLine.innerText =
     `This trip will cost $${destinations.getTripCost().toFixed(2)}.`;
 }
 
+function checkLogin() {
+  event.preventDefault()
+  if (checkUsername() && passwordInput.value === "travel") {
+    getData(traveler.id)
+    updateDOM.displayMainPage()
+  } else {
+    alert("Invalid username and/or password. Please try again.")
+  }
+}
 
-
-// // SHOW & HIDE HELPER FUNCTIONS
-
-// function hide(elements) {
-//   elements.forEach(element => {
-//     element.classList.add('hidden');
-//   });
-// }
-
-// function show(elements) {
-//   elements.forEach(element => {
-//     element.classList.remove('hidden');
-//   });
-// }
-
-// hide([yourTripsDashboardPage, wannaJetPage, navBarLinksSection, name]);
-
-// show([loginPage]);
+function checkUsername() {
+  if (usernameInput.value.split("traveler")[1]) {
+    const id = parseInt(usernameInput.value.split("traveler")[1])
+    traveler.id = id
+    return allTravelers.find(trav => trav.id === id)
+  }
+}
