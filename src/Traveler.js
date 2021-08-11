@@ -2,14 +2,14 @@ const dayjs = require("dayjs")
 
 class Traveler {
   constructor(travelerData) {
-    this.id = travelerData.id;
-    this.name = travelerData.name;
-    this.travelerType = travelerData.travelerType;
+    this.id = travelerData.id
+    this.name = travelerData.name
+    this.travelerType = travelerData.travelerType
     this.trips = []
   }
 
   getMyTrips(tripsData) {
-    this.trips = tripsData.filter(trip => trip.userID === this.id);
+    this.trips = tripsData.filter(trip => trip.userID === this.id)
   }
 
   getTripDetails(destinationData) {

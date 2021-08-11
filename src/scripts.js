@@ -24,6 +24,7 @@ const loginSubmitButton = document.querySelector(".login-button")
 const usernameInput = document.querySelector(".username-input")
 const passwordInput = document.querySelector(".password-input")
 
+
 // ------- EVENT LISTENERS --------
 bookItButton.addEventListener("click", bookTrip)
 calculateTripCostButton.addEventListener("click", calculateTripCost)
@@ -63,7 +64,6 @@ let dataSetter = {
   setTrips(tripsData) {
     allTrips = new TripsRepo(tripsData.trips)
     traveler.getMyTrips(tripsData.trips)
-    // traveler.sortMyTrips()
   },
 
   setDestinations(destinationsData) {
@@ -90,6 +90,7 @@ function bookTrip() {
   postTripRequest()
 }
 
+// ----- POST --------
 function postTripRequest() {
   fetch("http://localhost:3001/api/v1/trips", {
     method: "POST",
@@ -114,6 +115,7 @@ function postTripRequest() {
     .catch(err => console.log(`POST Error: ${err.message}`))
 }
 
+// ---- MORE PAGE FUNCTIONALITY -----
 function formatDate(dateValue) {
   let splitDate = dateValue.split("-")
   let joinedDate = splitDate.join("/")

@@ -1,6 +1,6 @@
 class DestinationsRepo {
   constructor(destinationData) {
-    this.allDestinations = destinationData;
+    this.allDestinations = destinationData
   }
 
   getTripCost() {
@@ -9,8 +9,8 @@ class DestinationsRepo {
     const tripDuration = document.querySelector("#trip-duration")
     let matchedDest = this.allDestinations.find(dest => dest.id === parseInt(destinationDropdown.value))
     let tripCost = (numTravelers.value * matchedDest.estimatedFlightCostPerPerson
-      + tripDuration.value * matchedDest.estimatedLodgingCostPerDay) * 1.1;
-    return tripCost;
+      + tripDuration.value * matchedDest.estimatedLodgingCostPerDay) * 1.1
+    return tripCost
   }
 }
 
