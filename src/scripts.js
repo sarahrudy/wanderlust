@@ -86,8 +86,8 @@ function getAnnualSpent() {
 
 function bookTrip() {
   event.preventDefault()
-  getData(traveler.id)
   postTripRequest()
+  setTimeout(function () { getData(traveler.id) }, 250)
 }
 
 // ----- POST --------
