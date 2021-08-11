@@ -7,7 +7,7 @@ import { sampleTravelerData,
 } from '../src/data/sampleData'
 
 describe('Traveler', () => {
-  let traveler 
+  let traveler, sampleTrips, sampleDestinations
 
   beforeEach(() => {
     traveler = new Traveler(sampleTravelerData[2])
@@ -37,8 +37,10 @@ describe('Traveler', () => {
   })
 
   it("should be able to get trips that match ID", () => {
-    traveler.getMyTrips(sampleTripsData)
-    expect(traveler.trips[0]).to.deep.equal(sampleTripsData[3])
+    traveler.getMyTrips(sampleTrips)
+    console.log(traveler.trips[0])
+    console.log(sampleTrips[3])
+    expect(traveler.trips[0]).to.deep.equal(sampleTrips[4])
   })
 
 
