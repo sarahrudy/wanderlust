@@ -29,15 +29,34 @@ let updateDOM = {
             <p>Trip status: ${trip.status}</p>
           </article>
         </div>
-      </section >`
+      </section>`
     })
   },
 
+  displayAmountSpentThisYear(amountTotal) {
+    const amountSpentLine = document.querySelector(".amount-spent")
+    amountSpentLine.innerText = `You've only spent $${amountTotal} this year on travel.`
+  },
 
+  displayDestinationDropdown(destinationsData) {
+    const destinationsDropdown = document.querySelector("#destination")
+    destinationsData.map(dest => {
+      destinationsDropdown.innerHTML +=
+        `<option value="${dest.id}">${dest.destination}</option>`
+    })
+  },
+
+  displayMainPage() {
+    const loginPageSection = document.querySelector(".login-page-section")
+    const mainPageSection = document.querySelector(".main-page-section")
+    const bookTripSection = document.querySelector(".book-trip-section")
+    const tripCardsSection = document.querySelector(".trip-cards-section")
+    loginPageSection.classList.add("hidden")
+    mainPageSection.classList.remove("hidden")
+    bookTripSection.classList.remove("hidden")
+    tripCardsSection.classList.remove("hidden")
+  }
 }
-
-
-
 
 
 

@@ -1,6 +1,3 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
 import './css/base.scss'
 
 import {
@@ -10,19 +7,38 @@ import {
   getAllDestinationsData
 } from './API'
 
-import dayjs from 'dayjs'
 import Traveler from './Traveler'
 import TripsRepo from './TripsRepo'
 import DestinationsRepo from './DestinationsRepo'
 import updateDOM from './updateDOM'
 
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
+// ------- QUERY SELECTORS --------
+const bookItButton = document.querySelector(".book-it-button")
+const destinationDropdown = document.querySelector("#destination")
+const numTravelers = document.querySelector("#num-travelers")
+const departDate = document.querySelector("#travel-date")
+const tripDuration = document.querySelector("#trip-duration")
+const tripCostLine = document.querySelector("#trip-cost")
+const calculateTripCostButton = document.querySelector(".calculate-cost-button")
+const loginSubmitButton = document.querySelector(".login-button")
+const usernameInput = document.querySelector(".username-input")
+const passwordInput = document.querySelector(".password-input")
 
-let traveler, allTravelers, allTrips, destinations
+
+// ------- EVENT LISTENERS --------
+bookItButton.addEventListener("click", bookTrip)
+calculateTripCostButton.addEventListener("click", calculateTripCost)
+loginSubmitButton.addEventListener("click", checkLogin)
+
 
 window.addEventListener('load', getData(14))
 
+
+// ------- GLOBAL VARIABLES -------
+let traveler, allTravelers, allTrips, destinations
+
+
+// -------- FETCH ----------
 function getData(id) {
   Promise.all([getTraveler(id), getAllTravelersData(), getAllTripsData(), getAllDestinationsData()])
     .then(data => {
@@ -34,6 +50,7 @@ function getData(id) {
   })
 }
 
+// -------- FETCH HELPER METHODS -------
 let dataSetter = {
   setTraveler(travelerData) {
     traveler = new Traveler(travelerData)
@@ -51,35 +68,80 @@ let dataSetter = {
 
   setDestinations(destinationsData) {
     destinations = new DestinationsRepo(destinationsData.destinations)
+    updateDOM.displayDestinationDropdown(destinationsData.destinations)
   },
 
   matchTripsToDestinations() {
-    traveler.getTripDetails(destinations.allDestinations);
-    updateDOM.displayTripCards(traveler.trips);
-  },
-
-
-
+    traveler.getTripDetails(destinations.allDestinations)
+    updateDOM.displayTripCards(traveler.trips)
+    getAnnualSpent()
+  }
 }
 
+// ---- PAGE FUNCTIONALITY ---------
+function getAnnualSpent() {
+  const cost = traveler.calculateYearlySpent(traveler.trips)
+  updateDOM.displayAmountSpentThisYear(cost.toFixed(2))
+}
 
+function bookTrip() {
+  event.preventDefault()
+  getData(traveler.id)
+  postTripRequest()
+}
 
+// ----- POST --------
+function postTripRequest() {
+  fetch("http://localhost:3001/api/v1/trips", {
+    method: "POST",
+    body: JSON.stringify({
+      "id": Date.now(),
+      "userID": parseInt(traveler.id),
+      "destinationID": parseInt(destinationDropdown.value),
+      "travelers": parseInt(numTravelers.value),
+      "date": formatDate(departDate.value),
+      "duration": parseInt(tripDuration.value),
+      "status": "pending",
+      "suggestedActivities": []
+    }),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .then(data => traveler.trips.push(data))
+    .then(tripCostLine.innerText = "Trip request submitted!")
+    .catch(err => console.log(`POST Error: ${err.message}`))
+}
 
+// ---- MORE PAGE FUNCTIONALITY -----
+function formatDate(dateValue) {
+  let splitDate = dateValue.split("-")
+  let joinedDate = splitDate.join("/")
+  return joinedDate
+}
 
-// // SHOW & HIDE HELPER FUNCTIONS
+function calculateTripCost() {
+  event.preventDefault()
+  tripCostLine.innerText =
+    `This trip will cost $${destinations.getTripCost().toFixed(2)}.`;
+}
 
-// function hide(elements) {
-//   elements.forEach(element => {
-//     element.classList.add('hidden');
-//   });
-// }
+function checkLogin() {
+  event.preventDefault()
+  if (checkUsername() && passwordInput.value === "travel") {
+    getData(traveler.id)
+    updateDOM.displayMainPage()
+  } else {
+    alert("Invalid username and/or password. Please try again.")
+  }
+}
 
-// function show(elements) {
-//   elements.forEach(element => {
-//     element.classList.remove('hidden');
-//   });
-// }
-
-// hide([yourTripsDashboardPage, wannaJetPage, navBarLinksSection, name]);
-
-// show([loginPage]);
+function checkUsername() {
+  if (usernameInput.value.split("traveler")[1]) {
+    const id = parseInt(usernameInput.value.split("traveler")[1])
+    traveler.id = id
+    return allTravelers.find(trav => trav.id === id)
+  }
+}

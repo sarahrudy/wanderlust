@@ -1,4 +1,4 @@
-import { expect } from 'chai';
+import { expect } from 'chai'
 import Traveler from '../src/Traveler'
 import { sampleTravelerData } from '../src/data/sampleData'
 
