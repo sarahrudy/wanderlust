@@ -24,4 +24,15 @@ describe('Traveler', () => {
     expect(traveler.travelerType).to.equal('relaxer')
   })
 
+  it('should be able to get traveler by id', () => {
+    traveler.getMyTrips(sampleTravelerData)
+    expect(traveler.id).to.deep.equal(1)
+  })
+
+  it('should instantiate with the traveler name', () => {
+    expect(traveler.name).to.equal("Ham Leadbeater")
+  })
+
+
+
 })
