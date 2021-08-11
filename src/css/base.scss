@@ -33,7 +33,7 @@
 
 header {
   display: flex;
-  background-color: #404041;
+  background-color: $light-gray-color;
 }
 
 form {
@@ -43,7 +43,7 @@ form {
 }
 
 h2.book-trip {
-  color: #404041;
+  color: $light-gray-color;
 }
 
 button {
@@ -65,7 +65,7 @@ button {
 .card-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: $align-items;
 }
 
 .trip-cards {
@@ -76,8 +76,8 @@ button {
 
 .h3-container {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: $align-items;
 }
 
 .hidden {
