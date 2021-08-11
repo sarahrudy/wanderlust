@@ -1,6 +1,6 @@
 @use './_variables.scss' as *;
 @use './_mixin.scss' as *;
-@use './_normalize' as *;
+@use './_normalize.css' as *;
 
 
 *,
@@ -26,6 +26,7 @@
 .login-section {
   background-color: #D1D2D4;
   border: 1px solid #404041;
+  padding: 15px;
 }
 
 .book-trip-section {
