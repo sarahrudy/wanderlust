@@ -34,20 +34,22 @@
     <p class="amount-spent"></p>
     <div class="book-trip-container">
       <h2 class="book-trip">BOOK TRIP</h2>
-      <label for="travel-date" class="booking-labels">Travel Date
-        <input class="travel-date" id="travel-date" type="date" name="travel-date" min="2000-01-01" max="2035-12-31" placeholder="select date" required>
-      </label>
-      <label for="trip-duration" class="booking-labels">Trip Duration
-        <input class="trip-duration" id="trip-duration" type="number" min="1" placeholder="select number of days" required>
-      </label>
-      <label for="num-travelers" class="booking-labels">Number of Travelers
-        <input class="num-of-travelers" id="num-travelers" type="number" min="1" placeholder="how many travelers?" required>
-      </label>
-      <label for="destination" class="booking-labels">Destination
-        <select name="destination" id="destination" required>
-          <!-- destination dropdown menu will append here -->
-        </select>
-      </label>
+      <form>
+        <label for="travel-date" class="booking-labels">Travel Date
+          <input class="travel-date" id="travel-date" type="date" name="travel-date" min="2000-01-01" max="2035-12-31" placeholder="select date" required>
+        </label>
+        <label for="trip-duration" class="booking-labels">Trip Duration
+          <input class="trip-duration" id="trip-duration" type="number" name="trip-duration" min="1" placeholder="select number of days" required>
+        </label>
+        <label for="num-travelers" class="booking-labels">Number of Travelers
+          <input class="num-of-travelers" id="num-travelers" type="number" name="num-travelers" min="1" placeholder="how many travelers?" required>
+        </label>
+        <label for="destination" class="booking-labels">Destination
+          <select name="destination" id="destination" required>
+            <!-- destination dropdown menu will append here -->
+          </select>
+        </label>
+      </form>
       <button aria-label='calculate-cost-button'class="calculate-cost-button">Calculate Trip Cost</button>
       <button aria-label='book-it-button' class="book-it-button">Book It</button>
       <p id="trip-cost"> </p>
