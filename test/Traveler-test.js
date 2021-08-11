@@ -33,6 +33,12 @@ describe('Traveler', () => {
     expect(traveler.name).to.equal("Ham Leadbeater")
   })
 
+  it('should instantiate with a their travel type', () => {
+    expect(traveler.travelerType).to.equal("relaxer")
+  })
 
+  it("should be able to get trips that match ID", () => {
+    
+  })
 
 })
