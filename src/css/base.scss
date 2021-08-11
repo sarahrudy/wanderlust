@@ -87,3 +87,9 @@ button {
 .hidden {
   display: none !important;
 }
+
+@media screen and (max-width: 450px) {
+  main {
+    display: block;
+  }
+}
