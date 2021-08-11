@@ -25,7 +25,7 @@ const usernameInput = document.querySelector(".username-input")
 const passwordInput = document.querySelector(".password-input")
 
 // ------- EVENT LISTENERS --------
-bookItButton.addEventListener("click", submitTripRequest)
+bookItButton.addEventListener("click", bookTrip)
 calculateTripCostButton.addEventListener("click", calculateTripCost)
 loginSubmitButton.addEventListener("click", checkLogin)
 
@@ -63,6 +63,7 @@ let dataSetter = {
   setTrips(tripsData) {
     allTrips = new TripsRepo(tripsData.trips)
     traveler.getMyTrips(tripsData.trips)
+    // traveler.sortMyTrips()
   },
 
   setDestinations(destinationsData) {
@@ -77,13 +78,15 @@ let dataSetter = {
   }
 }
 
+// ---- PAGE FUNCTIONALITY ---------
 function getAnnualSpent() {
   const cost = traveler.calculateYearlySpent(traveler.trips)
   updateDOM.displayAmountSpentThisYear(cost.toFixed(2))
 }
 
-function submitTripRequest() {
+function bookTrip() {
   event.preventDefault()
+  getData(traveler.id)
   postTripRequest()
 }
 
