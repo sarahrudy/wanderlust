@@ -137,7 +137,7 @@ export const sampleTripsData = [
     duration: 7,
     status: "approved",
     suggestedActivities: []
-  }, 
+  },
 ]
 
 export const sampleDestinationsData = [
