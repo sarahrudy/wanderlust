@@ -1,13 +1,18 @@
 import { expect } from 'chai'
 import Traveler from '../src/Traveler'
-import { sampleTravelerData } from '../src/data/sampleData'
-import { sampleTripsData } from '../src/data/sampleData'
+
+import { sampleTravelerData, 
+         sampleTripsData,
+         sampleDestinationsData 
+} from '../src/data/sampleData'
 
 describe('Traveler', () => {
   let traveler 
 
   beforeEach(() => {
     traveler = new Traveler(sampleTravelerData[2])
+    sampleTrips = sampleTripsData
+    sampleDestinations = sampleDestinationsData
   })
 
   it('should be a function', () => {
@@ -32,8 +37,10 @@ describe('Traveler', () => {
   })
 
   it("should be able to get trips that match ID", () => {
-    traveler.getMyTrips(sampleTravelerData)
+    traveler.getMyTrips(sampleTripsData)
     expect(traveler.trips[0]).to.deep.equal(sampleTripsData[3])
   })
+
+
 
 })
