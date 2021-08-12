@@ -46,9 +46,17 @@ describe('Traveler', () => {
     expect(traveler.trips[0]).to.deep.equal(sampleTrips[1])
   })
 
-  it('should be able to count how many trips a travler has', () => {
+  it('should be able to count how many trips a traveler has', () => {
     traveler.getMyTrips(sampleTrips)
     expect(traveler.trips.length).to.equal(2)
   })
+
+  it('should be able to return trip details for that traveler only', () => {
+    traveler.getMyTrips(sampleTrips)
+    expect(traveler.trips[0].userID).to.equal(14)
+    expect(traveler.trips[0].travelers).to.equal(1)
+    expect(traveler.trips[0].date).to.equal("2022/02/12")
+  })
+
 
 })
