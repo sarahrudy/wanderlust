@@ -3,9 +3,9 @@ import Traveler from '../src/Traveler'
 import TripsRepo from '../src/TripsRepo'
 import DestinationsRepo from '../src/DestinationsRepo'
 
-import { sampleTravelerData, 
-         sampleTripsData,
-         sampleDestinationsData 
+import { sampleTraveler, 
+         sampleTrips,
+         sampleDestinations
 } from './sample-test-data/sampleData.js'
 
 
@@ -14,7 +14,7 @@ describe('Traveler', () => {
   let traveler
 
   beforeEach(() => {
-    traveler = new Traveler(sampleTravelerData[0])
+    traveler = new Traveler(sampleTraveler[0])
   })
 
   it('should be a function', () => {
@@ -39,6 +39,16 @@ describe('Traveler', () => {
 
   it('should start off with an empty array of trips', () => {
     expect(traveler.trips).to.deep.equal([])
+  })
+
+  it('should be able to get trips that match traveler id', () => {
+    traveler.getMyTrips(sampleTrips)
+    expect(traveler.trips[0]).to.deep.equal(sampleTrips[1])
+  })
+
+  it('should be able to count how many trips a travler has', () => {
+    traveler.getMyTrips(sampleTrips)
+    expect(traveler.trips.length).to.equal(2)
   })
 
 })
