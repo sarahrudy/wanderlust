@@ -1,4 +1,4 @@
-export const sampleTravelerData = [
+export const sampleTraveler = [
   {
     id: 14,
     name: "Ellynn Kyne",
@@ -7,7 +7,7 @@ export const sampleTravelerData = [
 ]
 
 
-export const sampleTripsData = [
+export const sampleTrips = [
   {
     id: 12,
     userID: 33,
@@ -140,7 +140,7 @@ export const sampleTripsData = [
   },
 ]
 
-export const sampleDestinationsData = [
+export const sampleDestinations = [
   {
     id: 19,
     destination: "Quito, Ecuador",
