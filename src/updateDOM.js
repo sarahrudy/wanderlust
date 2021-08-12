@@ -56,6 +56,8 @@ let updateDOM = {
     bookTripSection.classList.remove("hidden")
     tripCardsSection.classList.remove("hidden")
   }
+
+
 }
 
 

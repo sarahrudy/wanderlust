@@ -1,9 +1,6 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-// $primary-background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-// ;
-
-// @use './_variables.scss' as *;
-// @use './_mixin.scss' as *;
+@use './_variables.scss' as *;
+@use './_mixin.scss' as *;
+@use './_normalize.css' as *;
 
 
 *,
@@ -29,6 +26,7 @@
 .login-section {
   background-color: #D1D2D4;
   border: 1px solid #404041;
+  padding: 15px;
 }
 
 .book-trip-section {
@@ -37,17 +35,16 @@
 
 header {
   display: flex;
-  background-color: #404041;
+  background-color: $light-gray-color;
 }
 
 form {
-  display: flex;
-  flex-direction: column;
+@include flex-column;
   align-items: center;
 }
 
 h2.book-trip {
-  color: #404041;
+  color: $light-gray-color;
 }
 
 button {
@@ -59,17 +56,15 @@ button {
 }
 
 .book-trip-container {
-  display: flex;
-  flex-direction: column;
+@include flex-column;
   align-items: center;
   padding: 5px 0 0 0;
   min-height: 250px;
 }
 
 .card-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+@include flex-column;
+  align-items: $align-items;
 }
 
 .trip-cards {
@@ -80,10 +75,16 @@ button {
 
 .h3-container {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: $align-items;
 }
 
 .hidden {
   display: none !important;
+}
+
+@media screen and (max-width: 450px) {
+  main {
+    display: block;
+  }
 }
