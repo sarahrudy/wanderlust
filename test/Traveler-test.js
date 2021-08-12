@@ -1,18 +1,20 @@
 import { expect } from 'chai'
 import Traveler from '../src/Traveler'
+import TripsRepo from '../src/TripsRepo'
+import DestinationsRepo from '../src/DestinationsRepo'
 
 import { sampleTravelerData, 
          sampleTripsData,
          sampleDestinationsData 
-} from '../src/data/sampleData'
+} from './sample-test-data/sampleData.js'
+
+
 
 describe('Traveler', () => {
-  let traveler, sampleTrips, sampleDestinations
+  let traveler
 
   beforeEach(() => {
-    traveler = new Traveler(sampleTravelerData[2])
-    sampleTrips = sampleTripsData
-    sampleDestinations = sampleDestinationsData
+    traveler = new Traveler(sampleTravelerData[0])
   })
 
   it('should be a function', () => {
@@ -23,26 +25,17 @@ describe('Traveler', () => {
     expect(traveler).to.be.an.instanceOf(Traveler)  
   })
 
-  it('should be able to get traveler by id', () => {
-    traveler.getMyTrips(sampleTravelerData)
-    expect(traveler.id).to.deep.equal(3)
+  it('should instantiate with an id', () => {
+    expect(traveler.id).to.deep.equal(14)
   })
 
-  it('should instantiate with the traveler name', () => {
-    expect(traveler.name).to.equal("Sibby Dawidowitsch")
+  it('should instantiate with a name', () => {
+    expect(traveler.name).to.deep.equal('Ellynn Kyne')
   })
 
-  it('should instantiate with a their travel type', () => {
-    expect(traveler.travelerType).to.equal('shopper')
+  it('should instantiate with a traveler type', () => {
+    expect(traveler.travelerType).to.deep.equal('history buff')
   })
-
-  it("should be able to get trips that match ID", () => {
-    traveler.getMyTrips(sampleTrips)
-    console.log(traveler.trips[0])
-    console.log(sampleTrips[3])
-    expect(traveler.trips[0]).to.deep.equal(sampleTrips[4])
-  })
-
 
 
 })
