@@ -37,5 +37,8 @@ describe('Traveler', () => {
     expect(traveler.travelerType).to.deep.equal('history buff')
   })
 
+  it('should start off with an empty array of trips', () => {
+    expect(traveler.trips).to.deep.equal([])
+  })
 
 })
